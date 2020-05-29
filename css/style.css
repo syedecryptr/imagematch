@@ -1,0 +1,59 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+  }
+
+
+  /* For mobile phones: */
+  :root {
+    --cell-size: 100px;
+    --icon-size: calc(var(--cell-size) * .4);  
+    --columns-size: 4;
+    --margin-top-mobile: 25%;
+  }
+  
+  body {
+    margin: 0;
+    /* filter:blur(30px); */
+  }
+  
+  .board {
+    margin-top:var(--margin-top-mobile);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(var(--columns-size), auto);
+    filter:blur(30px);
+
+  }
+  
+  .cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    font-size: var(--icon-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.10);
+    -webkit-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.10);
+    -moz-box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.10);
+  }
+
+  
+@media only screen and (min-width: 768px) {
+    :root {
+        --cell-size: 150px;
+        --icon-size: calc(var(--cell-size) * .4);  
+        --columns-size: 4;
+        --margin-top: 10%;
+        /* this is based on number of rows */
+      }
+    .board {
+        margin-top:var(--margin-top);
+    }
+}
