@@ -20,8 +20,9 @@ function generate_cells(parent){
         newDiv.appendChild(newI);
         parent.appendChild(newDiv);
         newDiv.addEventListener("click", click_action.bind(this, newDiv), false)
-        document.body.appendChild(parent);
     }
+    document.getElementById("main").appendChild(parent);
+
 }
 
 function generate_board() {
@@ -61,7 +62,7 @@ function click_action(card){
         previous_card = undefined
         result_count += 2
     }
-    else if(previous_card != undefined && previous_card.id != matching_object[card.id] && previous_card.id != card.id){
+    else if(previous_card != undefined && previous_card.id != matching_object[card.id] && previous_card.id != card.id && condition_object[card.id]==true){
         previous_card.isFlip = true
         toggle_card(previous_card)
         previous_card = undefined
@@ -73,6 +74,7 @@ function click_action(card){
     }
     if (result_count == numberOfCells){
         console.log("Game complete")
+        stop_clock()    
     }
 
 }
@@ -110,8 +112,15 @@ function toggle_board(){
         icon.classList.add('animate__animated', animation_out);
         icon.addEventListener('animationend', () => {
             icon.style.opacity = "0";
+            start_clock()
         });
     }
+   
+    var el = document.getElementsByClassName("clockcontainer")[0]
+        el.style.webkitFilter = "blur(0px)";
+    
+
+    
 }
 
 function start_game(){

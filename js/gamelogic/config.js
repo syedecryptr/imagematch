@@ -12,4 +12,4 @@ var marginValueMobile =  Math.ceil(1/(6*numberOfColumns)*800)+"%";
 var marginValue = Math.ceil(1/(6*numberOfColumns)*100)+"%"
 
 //this time is in miliseconds
-var flashScreenTIme=5000
+var flashScreenTIme=1000*(numberOfColumns+2)

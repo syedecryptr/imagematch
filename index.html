@@ -4,12 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-  <link rel="stylesheet" href="form.css">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="fontawesome-free-5.13.0-web/js/all.js"></script> <!--load all styles -->
-  <script defer src="fontawesome-free-5.13.0-web/js/icons.js"></script> <!--load all styles -->
-
+  <link rel="stylesheet" href="./css/stopwatch.css">
+  <link rel="stylesheet" href="./css/form.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script defer src="./js/design/all.js"></script> <!--load all styles -->
+  <script defer src="./js/design/icons.js"></script> <!--load all styles -->
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Mono'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
   <title>Document</title>
 </head>
@@ -23,13 +24,76 @@
                 <a href="#" class="round-button"><i class="fa fa-play fa-1x"></i></a>
             </form>
         </div>
-  <div class="board" id="board">
+        <div class="centre" id="main">
+            <div class="clockcontainer">
+                <input class="hidden" id="start" name="controls" type="radio"/>
+                <input class="hidden" id="stop" name="controls" type="radio"/>
+                <input class="hidden" id="reset" name="controls" type="radio"/>
+                <div class="timer">
+                  <!-- <div class="clockcell">
+                    <div class="numbers tenhour moveten" id="tenhour">0 1 2 3 4 5 6 7 8 9</div>
+                  </div>
+                  <div class="clockcell">
+                    <div class="numbers hour moveten" id="hour">0 1 2 3 4 5 6 7 8 9</div>
+                  </div>
+                  <div class="clockcell divider">
+                    <div class="numbers">:</div>
+                  </div>
+                  <div class="clockcell">
+                    <div class="numbers tenminute movesix" id="tenminute">0 1 2 3 4 5 6</div>
+                  </div>-->
+                  <div class="clockcell"> 
+                    <div class="numbers minute moveten" id="minute"></div>
+                  </div>
+                  <div class="clockcell divider">
+                    <div class="numbers">:</div>
+                  </div>
+                  <div class="clockcell"> 
+                    <div class="numbers second moveten" id="second"></div>
+                  </div>
+                  <div class="clockcell divider">
+                    <div class="numbers">:</div>
+                  </div>
+                  <div class="clockcell">
+                    <div class="numbers millisecond moveten" id="millisecond"></div>
+                  </div>
+                </div>
+                <!-- <div class="timer-controls">
+                  <label for="start"> <i class="fa fa-play"></i></label>
+                  <label for="stop"><i class="fa fa-pause"></i></label>
+                  <label for="reset"><i class="fa fa-refresh"></i></label>
+                </div> -->
+            </div>  
+            <div class="board" id="board">
+            </div>
+        </div>
 
+        
+   
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
 
-  </div>
-  <script src="config.js" defer></script>
-  <script src="utils.js" defer></script>
-  <script src="main.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyBFA6pKujAvbwjw5XneUC79EuL6vLlP5sc",
+      authDomain: "imagematch-e9c86.firebaseapp.com",
+      databaseURL: "https://imagematch-e9c86.firebaseio.com",
+      projectId: "imagematch-e9c86",
+      storageBucket: "imagematch-e9c86.appspot.com",
+      messagingSenderId: "399763931102",
+      appId: "1:399763931102:web:fcd0629373f6eafe95a74f",
+      measurementId: "G-Y8N1PY1Z44"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+  </script> -->
+  <script src="./js/gamelogic/config.js" defer></script>
+  <script src="./js/gamelogic/utils.js" defer></script>
+  <script src="./js/gamelogic/main.js" defer></script>
+  <script src="./js/design/stopwatch.js" defer></script>
 
 </body>
 </html>

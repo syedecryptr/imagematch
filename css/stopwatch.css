@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.clockcontainer {
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  /* left: 70%;
+  top: 2%;
+  transform: translate(-50%, -50%); */
+  filter:blur(30px);
+
+}
+
+.hidden {
+  display: none;  
+}
+
+.timer {
+  padding: 10px;
+  /* overflow: hidden; */
+  display: inline-block;
+}
+.timer .clockcell {
+  width: 1em;
+  height: 60px;
+  font-size: 21px;
+  /* overflow: hidden; */
+  position: relative;
+  float: left;
+  color: #555;
+}
+.timer .clockcell .numbers {
+  width: 0.6em;
+  line-height: 60px;
+  font-family: "Roboto Mono";
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.timer-controls {
+  margin-top: 10px;
+}
+
+.timer-controls label {
+  cursor: pointer;
+  margin: 0 20px;
+  font-size: 20px;
+  border-radius: 50%;
+  color: white;
+  display: inline-flex;
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+}
+.timer-controls label:nth-child(1) {
+  background-color: #4caf50;
+}
+.timer-controls label:nth-child(1):hover {
+  background-color: #81c784;
+}
+.timer-controls label:nth-child(2) {
+  background-color: #f44336;
+}
+.timer-controls label:nth-child(2):hover {
+  background-color: #e57373;
+}
+.timer-controls label:nth-child(3) {
+  background-color: #2196f3;
+}
+.timer-controls label:nth-child(3):hover {
+  background-color: #64b5f6;
+}
+
+#stop:checked ~ .timer .numbers {
+  animation-play-state: paused;
+}
+
+#start:checked ~ .timer .numbers {
+  animation-play-state: running;
+}
+
+#reset:checked ~ .timer .numbers {
+  animation: none;
+}
+
+@keyframes moveten {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@keyframes movesix {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -360px;
+  }
+}
+.moveten {
+  animation: moveten 1s steps(10, end) infinite;
+  animation-play-state: paused;
+}
+
+.movesix {
+  animation: movesix 1s steps(6, end) infinite;
+  animation-play-state: paused;
+}
+
+.tenhour {
+  animation-duration: 360000s;
+}
+
+.hour {
+  animation-duration: 36000s;
+}
+
+.tenminute {
+  animation-duration: 3600s;
+}
+
+.minute {
+  animation-duration: 600s;
+}
+
+.tensecond {
+  animation-duration: 60s;
+}
+
+.second {
+  animation-duration: 10s;
+}
+
+.millisecond {
+  animation-duration: 1s;
+}
+
+.tenmillisecond {
+  animation-duration: 0.1s;
+}
+
+.hundredmillisecond {
+  animation-duration: 0.01s;
+}
+
+/*# sourceMappingURL=stopwatch.css.map */
