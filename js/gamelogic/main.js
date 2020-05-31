@@ -60,6 +60,7 @@ function generate_board() {
 function generate_handler( card ) {
     return function(event) { 
         click_action(card);
+        return false;
     };
 }
 
@@ -121,7 +122,7 @@ function toggle_card(card){
 function toggle_board(){
     for(var i=0; i < numberOfCells; i++){
         el = document.getElementById(i)
-        $(el).on("click touchstart",  generate_handler( el ));
+        $(el).on("touchstart click  ",  generate_handler( el ));
 
         icon = el.firstChild
         icon.classList.remove('animate__animated', animation_in);
@@ -139,9 +140,6 @@ function start_game(){
     var el = document.getElementsByClassName("container")[0] ;
     while ( el.firstChild ) el.removeChild( el.firstChild );
     el.remove()
-
-    // var el = document.getElementsByClassName("board")[0] ;
-    // while ( el.firstChild ) el.removeChild( el.firstChild );
 
 
     var el = document.getElementsByClassName("board")[0]
