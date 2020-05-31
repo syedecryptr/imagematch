@@ -5,8 +5,8 @@ var result_count = 0
 var stopwatch_count = 0
 var start_button = document.getElementsByClassName("round-button")[0]
 console.log(start_button)
-start_button.addEventListener("touchstart click", start_game.bind(this, start_button), false)
-
+start_button.addEventListener("click", start_game.bind(this, start_button), false)
+start_button.addEventListener("touchstart", start_game.bind(this, start_button), false)
 function generate_cells(parent){
     for(var i=0; i < numberOfCells; i++){
         var newDiv = document.createElement('div');
@@ -20,7 +20,8 @@ function generate_cells(parent){
         newI.className=sliced_icons[i];
         newDiv.appendChild(newI);
         parent.appendChild(newDiv);
-        newDiv.addEventListener("touchstart click", click_action.bind(this, newDiv), false)
+        newDiv.addEventListener("click", click_action.bind(this, newDiv), false)
+        newDiv.addEventListener("touchstart", click_action.bind(this, newDiv), false)
     }
     document.getElementById("main").appendChild(parent);
 
