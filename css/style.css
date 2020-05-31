@@ -5,7 +5,7 @@
 
   /* For mobile phones: */
   :root {
-    --cell-size: 95px;
+    --cell-size: 90px;
     --icon-size: calc(var(--cell-size) * .4);  
     --columns-size: 4;
     /* --margin-top-mobile: 25%; */
