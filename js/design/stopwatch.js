@@ -44,4 +44,3 @@ function clockRunning(){
         document.getElementById("second").innerHTML=sec_string;
         document.getElementById("minute").innerHTML=min_string;
 };
-start_clock()

@@ -2,6 +2,7 @@ var matching_object = {}
 var condition_object = {}
 var previous_card = undefined
 var result_count = 0
+var stopwatch_count = 0
 var start_button = document.getElementsByClassName("round-button")[0]
 console.log(start_button)
 start_button.addEventListener("click", start_game.bind(this, start_button), false)
@@ -81,7 +82,7 @@ function click_action(card){
 
 
 
-function toggle_card(card){
+function toggle_card(card){ 
     icon = card.firstChild
     icon.style.setProperty('--animate-duration', animation_duration);
 
@@ -101,7 +102,7 @@ function toggle_card(card){
         });
         card.isShown=true;
     }
-    
+
 }
 
 function toggle_board(){
@@ -110,17 +111,10 @@ function toggle_board(){
         icon = el.firstChild
         icon.classList.remove('animate__animated', animation_in);
         icon.classList.add('animate__animated', animation_out);
-        icon.addEventListener('animationend', () => {
-            icon.style.opacity = "0";
-            start_clock()
-        });
     }
-   
+    setTimeout(function(){ start_clock(); }, 500)
     var el = document.getElementsByClassName("clockcontainer")[0]
-        el.style.webkitFilter = "blur(0px)";
-    
-
-    
+    el.style.webkitFilter = "blur(0px)";    
 }
 
 function start_game(){
