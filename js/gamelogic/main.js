@@ -5,8 +5,13 @@ var result_count = 0
 var stopwatch_count = 0
 var start_button = document.getElementsByClassName("round-button")[0]
 console.log(start_button)
-start_button.addEventListener("click", start_game.bind(this, start_button), false)
-start_button.addEventListener("touchstart", start_game.bind(this, start_button), false)
+// start_button.addEventListener("click", start_game.bind(this, start_button), false)
+// start_button.addEventListener("touchstart mousedown", start_game.bind(this, start_button), false)
+$(start_button).on("click touchstart", function() {
+    // Do things]start_game
+    start_game()
+    return false;
+  });
 function generate_cells(parent){
     for(var i=0; i < numberOfCells; i++){
         var newDiv = document.createElement('div');
@@ -20,8 +25,10 @@ function generate_cells(parent){
         newI.className=sliced_icons[i];
         newDiv.appendChild(newI);
         parent.appendChild(newDiv);
-        newDiv.addEventListener("click", click_action.bind(this, newDiv), false)
-        newDiv.addEventListener("touchstart", click_action.bind(this, newDiv), false)
+        // newDiv.addEventListener("click", click_action.bind(this, newDiv), false)
+        // newDiv.addEventListener("touchstart mousedown", click_action.bind(this, newDiv), false)
+        //https://stackoverflow.com/questions/7018919/how-to-bind-touchstart-and-click-events-but-not-respond-to-both
+        $(newDiv).on("click touchstart",  generate_handler( newDiv ));
     }
     document.getElementById("main").appendChild(parent);
 
@@ -51,7 +58,11 @@ function generate_board() {
     generate_cells(toAdd)
 }
 
-
+function generate_handler( card ) {
+    return function(event) { 
+        click_action(card);
+    };
+}
 
 function click_action(card){
 
