@@ -5,7 +5,7 @@ var result_count = 0
 var stopwatch_count = 0
 var start_button = document.getElementsByClassName("round-button")[0]
 console.log(start_button)
-start_button.addEventListener("click", start_game.bind(this, start_button), false)
+start_button.addEventListener("touchstart click", start_game.bind(this, start_button), false)
 
 function generate_cells(parent){
     for(var i=0; i < numberOfCells; i++){
@@ -20,7 +20,7 @@ function generate_cells(parent){
         newI.className=sliced_icons[i];
         newDiv.appendChild(newI);
         parent.appendChild(newDiv);
-        newDiv.addEventListener("click", click_action.bind(this, newDiv), false)
+        newDiv.addEventListener("touchstart click", click_action.bind(this, newDiv), false)
     }
     document.getElementById("main").appendChild(parent);
 
@@ -112,7 +112,7 @@ function toggle_board(){
         icon.classList.remove('animate__animated', animation_in);
         icon.classList.add('animate__animated', animation_out);
     }
-    setTimeout(function(){ start_clock(); }, 500)
+    setTimeout(function(){ start_clock(); }, animation_duration.slice(0, -1)*1000)
     var el = document.getElementsByClassName("clockcontainer")[0]
     el.style.webkitFilter = "blur(0px)";    
 }

@@ -11,7 +11,6 @@ function start_clock() {
     if (timeStopped !== null) {
         stoppedDuration += (new Date() - timeStopped);
     }
-    console.log(stoppedDuration);
 
     started = setInterval(clockRunning, 1);	
 }

@@ -5,6 +5,7 @@ if (numberOfColumns%2==0)
 else
     var numberOfCells = numberOfColumns*(numberOfColumns+1)
 
+
 var animation_duration = '0.5s'
 var animation_in = 'animate__flipInY'
 var animation_out = 'animate__flipOutY'
