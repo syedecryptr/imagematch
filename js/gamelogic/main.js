@@ -28,7 +28,6 @@ function generate_cells(parent){
         // newDiv.addEventListener("click", click_action.bind(this, newDiv), false)
         // newDiv.addEventListener("touchstart mousedown", click_action.bind(this, newDiv), false)
         //https://stackoverflow.com/questions/7018919/how-to-bind-touchstart-and-click-events-but-not-respond-to-both
-        $(newDiv).on("click touchstart",  generate_handler( newDiv ));
     }
     document.getElementById("main").appendChild(parent);
 
@@ -95,10 +94,10 @@ function click_action(card){
 
 
 function toggle_card(card){ 
-    icon = card.firstChild
-    icon.style.setProperty('--animate-duration', animation_duration);
 
     if (card.isFlip && card.isShown==true){
+        icon = card.firstChild
+        icon.style.setProperty('--animate-duration', animation_duration);    
         icon.classList.remove('animate__animated', animation_in);
         icon.classList.add('animate__animated', animation_out);
         icon.addEventListener('animationend', () => {
@@ -107,6 +106,8 @@ function toggle_card(card){
         card.isShown=false;
     }
     else if(card.isFlip && card.isShown==false){
+        icon = card.firstChild
+        icon.style.setProperty('--animate-duration', animation_duration);    
         icon.classList.remove('animate__animated', animation_out);
         icon.classList.add('animate__animated', animation_in);
         icon.addEventListener('animationend', () => {
@@ -120,13 +121,16 @@ function toggle_card(card){
 function toggle_board(){
     for(var i=0; i < numberOfCells; i++){
         el = document.getElementById(i)
+        $(el).on("click touchstart",  generate_handler( el ));
+
         icon = el.firstChild
         icon.classList.remove('animate__animated', animation_in);
         icon.classList.add('animate__animated', animation_out);
     }
     setTimeout(function(){ start_clock(); }, animation_duration.slice(0, -1)*1000)
     var el = document.getElementsByClassName("clockcontainer")[0]
-    el.style.webkitFilter = "blur(0px)";    
+    el.style.webkitFilter = "blur(0px)";   
+     
 }
 
 function start_game(){
