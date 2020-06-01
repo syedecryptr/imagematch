@@ -4,7 +4,9 @@ var previous_card = undefined
 var result_count = 0
 var stopwatch_count = 0
 var start_button = document.getElementsByClassName("round-button")[0]
-console.log(start_button)
+var email_value = ""
+var channel = "public"
+// console.log(start_button)
 // start_button.addEventListener("click", start_game.bind(this, start_button), false)
 // start_button.addEventListener("touchstart mousedown", start_game.bind(this, start_button), false)
 $(start_button).on("click touchstart", function() {
@@ -12,6 +14,22 @@ $(start_button).on("click touchstart", function() {
     start_game()
     return false;
   });
+
+//Email validation.
+function ValidateEmail(inputText){
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(inputText.value.match(mailformat)){
+        // document.form1.text1.focus();
+        return true;
+    }
+    else{
+        alert("You have entered an invalid email address!");
+        // document.form1.text1.focus();
+        return false;
+    }
+}
+
+
 function generate_cells(parent){
     for(var i=0; i < numberOfCells; i++){
         var newDiv = document.createElement('div');
@@ -34,7 +52,12 @@ function generate_cells(parent){
 }
 
 function generate_board() {
-    
+    //hide the leaderboard
+    var el = document.getElementById("table")
+    el.style.display = "none"
+    el.style.visibility = "hidden"
+
+
     var toAdd = document.getElementById('board');
     var shuffled_icons = icons.shuffle()
     
@@ -86,8 +109,7 @@ function click_action(card){
         previous_card.isFlip = false
     }
     if (result_count == numberOfCells){
-        console.log("Game complete")
-        stop_clock()    
+        game_end()
     }
 
 }
@@ -134,20 +156,39 @@ function toggle_board(){
      
 }
 
-function start_game(){
-
-
-    var el = document.getElementsByClassName("container")[0] ;
-    while ( el.firstChild ) el.removeChild( el.firstChild );
-    el.remove()
-
+function display_scoreBoard(){
 
     var el = document.getElementsByClassName("board")[0]
-    el.style.webkitFilter = "blur(0px)";
-    // generate_board()
+    el.style.webkitFilter = "blur(25px)";
+    ReadUserData(channel)
 
-    setTimeout(function(){ toggle_board(); }, flashScreenTIme)
 }
+
+function game_end(){
+    stop_clock() 
+    name = email_value.split("@")[0]
+    score = document.getElementById("minute").innerHTML+":"+document.getElementById("second").innerHTML+":"+document.getElementById("millisecond").innerHTML
+    writeUserData(email_value, name, score, channel, display_scoreBoard)
+}
+
+
+function start_game(){
+
+    if (ValidateEmail(email)){
+        email_value = document.getElementById("email").value
+        var el = document.getElementsByClassName("container")[0] ;
+        while ( el.firstChild ) el.removeChild( el.firstChild );
+        el.remove()
+
+
+        var el = document.getElementsByClassName("board")[0]
+        el.style.webkitFilter = "blur(0px)";
+        // generate_board()
+
+        setTimeout(function(){ toggle_board(); }, flashScreenTIme)
+    }
+}
+
 
 generate_board()
 

@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./css/stopwatch.css">
   <link rel="stylesheet" href="./css/form.css">
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/table.css">
   <script defer src="./js/design/all.js"></script> <!--load all styles -->
   <script defer src="./js/design/icons.js"></script> <!--load all styles -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -19,7 +20,7 @@
         <div class="container">
            <!-- <h1>Login</h1> -->
             <form>
-                <input type="text" placeholder="Name" onfocus="this.placeholder = ''"
+                <input id="email" type="text" placeholder="Name" onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'Name'" >
                 <a href="#" class="round-button"><i class="fa fa-play fa-1x"></i></a>
             </form>
@@ -67,12 +68,19 @@
             <div class="board" id="board">
             </div>
         </div>
-
-        
-   
-  <!-- <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
-
+        <table class="container" id="table">
+          <tr>
+          </tr>
+        </table>
+        <!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js'></script>
+  
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-app.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+  
   <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.14.5/firebase-database.js"></script>
 
   <script>
     // Your web app's Firebase configuration
@@ -89,11 +97,13 @@
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     firebase.analytics();
-  </script> -->
+  </script>
   <script src="./js/design/stopwatch.js" defer></script>
   <script src="./js/gamelogic/config.js" defer></script>
   <script src="./js/gamelogic/utils.js" defer></script>
+  <script src="./js/gamelogic/database.js" defer></script>
+  <script  src="./js/design/table.js"></script>      
   <script src="./js/gamelogic/main.js" defer></script>
-
+  
 </body>
 </html>
