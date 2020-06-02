@@ -14,4 +14,4 @@ var marginValue = Math.ceil(1/(6*numberOfColumns)*100)+"%"
 
 //this time is in miliseconds
 var flashScreenTIme=1000*(numberOfColumns+2)
-var time_delay_for_db = 50
+var time_delay_for_db = 500
