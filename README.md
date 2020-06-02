@@ -6,8 +6,8 @@
 
 
 ### Todos
- - Add database for competitive game
- -- Dahboard for highscores across various categories
+ ~~- Add database for competitive game
+ -- Dahboard for highscores across various categories~~
  - Add socket logic multiplayer
  -- Two or more players against each other, game opens with scores of players who played already not needing to play at same time.
  -- Two or more players on same board(large)
