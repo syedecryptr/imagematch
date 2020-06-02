@@ -4,21 +4,29 @@ var previous_card = undefined
 var result_count = 0
 var stopwatch_count = 0
 var start_button = document.getElementsByClassName("round-button")[0]
+var reload_button = document.getElementsByClassName("refresh-button")[0]
+var container = document.getElementById("container")
+var reload_container = document.getElementById("reload-container")
+var table = document.getElementById("table")
 var email_value = ""
 var channel = "public"
-// console.log(start_button)
-// start_button.addEventListener("click", start_game.bind(this, start_button), false)
-// start_button.addEventListener("touchstart mousedown", start_game.bind(this, start_button), false)
+var name = ""
 $(start_button).on("click touchstart", function() {
     // Do things]start_game
     start_game()
     return false;
-  });
+});
 
-//Email validation.
+$(reload_button).on("click touchstart", function() {
+    // Do things]start_game
+    reload_game()
+    return false;
+});
+
 function ValidateEmail(inputText){
+    console.log("validate email: ", inputText)
     var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(inputText.value.match(mailformat)){
+    if(inputText.match(mailformat)){
         // document.form1.text1.focus();
         return true;
     }
@@ -29,8 +37,8 @@ function ValidateEmail(inputText){
     }
 }
 
-
 function generate_cells(parent){
+    
     for(var i=0; i < numberOfCells; i++){
         var newDiv = document.createElement('div');
         newDiv.id=i;
@@ -53,12 +61,11 @@ function generate_cells(parent){
 
 function generate_board() {
     //hide the leaderboard
-    var el = document.getElementById("table")
-    el.style.display = "none"
-    el.style.visibility = "hidden"
-
+    table.style.display = "none"
+    reload_container.style.display="none"
 
     var toAdd = document.getElementById('board');
+    while ( toAdd.firstChild ) toAdd.removeChild( toAdd.firstChild );
     var shuffled_icons = icons.shuffle()
     
     document.documentElement.style.setProperty('--columns-size', numberOfColumns);
@@ -114,8 +121,6 @@ function click_action(card){
 
 }
 
-
-
 function toggle_card(card){ 
 
     if (card.isFlip && card.isShown==true){
@@ -142,6 +147,7 @@ function toggle_card(card){
 }
 
 function toggle_board(){
+    
     for(var i=0; i < numberOfCells; i++){
         el = document.getElementById(i)
         $(el).on("touchstart click  ",  generate_handler( el ));
@@ -153,15 +159,33 @@ function toggle_board(){
     setTimeout(function(){ start_clock(); }, animation_duration.slice(0, -1)*1000)
     var el = document.getElementsByClassName("clockcontainer")[0]
     el.style.webkitFilter = "blur(0px)";   
-     
+
+}
+
+function after_game(leaderboard){
+
+    //show the leaderboard
+    table.style.display="table"
+    //rearrange leaderboard
+    r_leaderboard = []
+    for (var i=0; i<leaderboard.length; i++){
+        l_element = leaderboard[i]
+        l_element["pos"] = i+1
+        if(i<5 || l_element["name"] == name){
+            r_leaderboard.push(l_element)
+        }
+    }
+    generate_table(r_leaderboard)
+    //show the reload button
+    reload_container.style.display="block";
 }
 
 function display_scoreBoard(){
 
     var el = document.getElementsByClassName("board")[0]
     el.style.webkitFilter = "blur(25px)";
-    ReadUserData(channel)
-
+    ReadUserData(channel, after_game)
+    
 }
 
 function game_end(){
@@ -171,24 +195,39 @@ function game_end(){
     writeUserData(email_value, name, score, channel, display_scoreBoard)
 }
 
-
 function start_game(){
-
-    if (ValidateEmail(email)){
-        email_value = document.getElementById("email").value
-        var el = document.getElementsByClassName("container")[0] ;
-        while ( el.firstChild ) el.removeChild( el.firstChild );
-        el.remove()
-
-
-        var el = document.getElementsByClassName("board")[0]
+    if (email_value == ""){
+        email_value = document.getElementById("email").value;
+    }
+    if (ValidateEmail(email_value)){
+        // var el = document.getElementsByClassName("container")[0] ;
+        // while ( el.firstChild ) el.removeChild( el.firstChild );
+        // el.remove()
+        container.style.display="none";
+        var el = document.getElementsByClassName("board")[0];
         el.style.webkitFilter = "blur(0px)";
         // generate_board()
-
         setTimeout(function(){ toggle_board(); }, flashScreenTIme)
+    }
+    else {
+        email_value=""
     }
 }
 
+function reload_game(){
+
+    matching_object = {};
+    condition_object = {};
+    previous_card = undefined;
+    result_count = 0;
+    stopwatch_count = 0;
+    table.style.display="none";
+    reload_container.style.display = "none";
+    reset_clock();
+    generate_board();
+    start_game();
+
+}
 
 generate_board()
 

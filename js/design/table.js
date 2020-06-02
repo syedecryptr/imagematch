@@ -66,7 +66,7 @@ function generate_table(leaderboard){
   // position using the index of the data points
   drivers
     .append('td')
-    .text((d, i) => i + 1)
+    .text(({pos}) => pos)
     .attr('class', 'position');
 
 

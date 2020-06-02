@@ -85,6 +85,44 @@ body{
 	box-shadow: 0px 0px 10px rgba(255,255,100,1);
 	text-shadow: 0px 0px 10px rgba(255,255,100,1);
 }
+.reload-container{
+    z-index: 3;
+    font-size: larger;
+    position: absolute;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 20px 25px;
+    width: 300px;
+}
+
+.refresh-button {
+    position: relative;
+    left:38%;
+	box-sizing: border-box;
+	display:block;
+	width:60px;
+	height:60px;
+	padding-top: 14px;
+	padding-left: 0px;
+	line-height: 20px;
+	border: 6px solid #fff;
+	border-radius: 50%;
+	color:#f5f5f5;
+	text-align:center;
+	text-decoration:none;
+	background-color: rgba(121, 121, 121, 0.5);
+	font-size:20px;
+	font-weight:bold;
+	transition: all 0.3s ease;
+}
+.refresh-button:hover {
+	background-color: rgba(0,0,0,0.8);
+	box-shadow: 0px 0px 10px rgba(255,255,100,1);
+	text-shadow: 0px 0px 10px rgba(255,255,100,1);
+}
+
 .container form input:hover {
 	background-color: rgba(145, 145, 145, 0.1);
 	box-shadow: 0px 0px 5px rgba(255,255,100,0.1);

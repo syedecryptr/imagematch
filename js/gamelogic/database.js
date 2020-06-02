@@ -31,7 +31,7 @@ function writeUserData(userId, name, score, channel, display) {
     });
 };
 
-function ReadUserData(channel){
+function ReadUserData(channel,aftergame){
     var leaderboard = []
     var scoreCountRef = firebase.database().ref(channel+'/');
     // console.log(scoreCountRef)
@@ -41,9 +41,7 @@ function ReadUserData(channel){
         snapshot.forEach(function(child) {
             leaderboard.push(child.val()) // NOW THE CHILDREN PRINT IN ORDER
         });
-        var el = document.getElementById("table")
-        el.removeAttribute("style")
-        generate_table(leaderboard)
+        aftergame(leaderboard)
     });
 };
 

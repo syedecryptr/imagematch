@@ -20,13 +20,15 @@ function stop_clock() {
     clearInterval(started);
 }
  
-// function reset() {
-//     clearInterval(started);
-//     stoppedDuration = 0;
-//     timeBegan = null;
-//     timeStopped = null;
-//     document.getElementById("display-area").innerHTML = "00:00:00.000";
-// }
+function reset_clock() {
+    clearInterval(started);
+    stoppedDuration = 0;
+    timeBegan = null;
+    timeStopped = null;
+    document.getElementById("millisecond").innerHTML="000";
+    document.getElementById("second").innerHTML="00";
+    document.getElementById("minute").innerHTML="00";
+}
 
 function clockRunning(){
     var currentTime = new Date()

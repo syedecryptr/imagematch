@@ -16,9 +16,10 @@
   <title>Image Match</title>
 </head>
 <body>
-
-        <div class="container">
-           <!-- <h1>Login</h1> -->
+        <div class="reload-container" id="reload-container">
+            <a href="#" class="refresh-button"><i class="fas fa-redo fa-1x"></i></a>
+        </div>
+        <div class="container" id="container">
             <form>
                 <input id="email" type="email" placeholder="Email" onfocus="this.placeholder = ''"
                 onblur="this.placeholder = 'Email'" >
@@ -31,18 +32,6 @@
                 <input class="hidden" id="stop" name="controls" type="radio"/>
                 <input class="hidden" id="reset" name="controls" type="radio"/>
                 <div class="timer">
-                  <!-- <div class="clockcell">
-                    <div class="numbers tenhour moveten" id="tenhour">0 1 2 3 4 5 6 7 8 9</div>
-                  </div>
-                  <div class="clockcell">
-                    <div class="numbers hour moveten" id="hour">0 1 2 3 4 5 6 7 8 9</div>
-                  </div>
-                  <div class="clockcell divider">
-                    <div class="numbers">:</div>
-                  </div>
-                  <div class="clockcell">
-                    <div class="numbers tenminute movesix" id="tenminute">0 1 2 3 4 5 6</div>
-                  </div>-->
                   <div class="clockcell"> 
                     <div class="numbers minute moveten" id="minute"></div>
                   </div>
@@ -107,3 +96,5 @@
   
 </body>
 </html>
+
+<!-- add reload buttom -->
