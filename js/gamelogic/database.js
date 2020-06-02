@@ -10,6 +10,7 @@ function writeUserData(userId, name, score, channel, display) {
         //update the database only when user time is less than the previous time
         //Or the user is playing for the first time.
         if (snapshot.val() == null || score < snapshot.val().score){
+            console.log("setting")
             database.set({
                 name: name,
                 score: score
@@ -36,7 +37,7 @@ function ReadUserData(channel,aftergame){
     var leaderboard = []
     var scoreCountRef = firebase.database().ref(channel+'/');
     // console.log(scoreCountRef)
-    scoreCountRef.orderByChild("score").on('value', function(snapshot) {
+    scoreCountRef.orderByChild("score").once('value', function(snapshot) {
         // console.log(snapshot.val())
         leaderboard = []
         snapshot.forEach(function(child) {
