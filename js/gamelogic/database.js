@@ -20,7 +20,8 @@ function writeUserData(userId, name, score, channel, display) {
                 } else {
                     console.log("write success")
                   // Data saved successfully!
-                    display()
+                  setTimeout(function(){ display(); }, time_delay_for_db)  
+                  
                 }
               });
         }
