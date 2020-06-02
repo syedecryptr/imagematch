@@ -16,9 +16,9 @@ function writeUserData(userId, name, score, channel, display) {
             }, function(error) {
                 if (error) {
                   // The write failed...
-                  console.log("writing to database failed")
+                //   console.log("writing to database failed")
                 } else {
-                    console.log("write success")
+                    // console.log("write success")
                   // Data saved successfully!
                   setTimeout(function(){ display(); }, time_delay_for_db)  
                   
