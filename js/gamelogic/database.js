@@ -9,9 +9,9 @@ function writeUserData(userId, name, score, channel, display) {
     firebase.database().ref(channel+"/" + hashCode(userId)).once('value').then(function(snapshot) {
         //update the database only when user time is less than the previous time
         //Or the user is playing for the first time.
-        console.log(score, snapshot.val().score)
+        // console.log(score, snapshot.val().score)
         if (snapshot.val() == null || score < snapshot.val().score){
-            console.log("setting")
+            // console.log("setting")
             database.set({
                 name: name,
                 score: score
