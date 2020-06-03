@@ -5,6 +5,7 @@ function hashCode(str) {
 
 
 function writeUserData(userId, name, score, channel, display) {
+
     var database = firebase.database().ref(channel+'/'+hashCode(userId));
     firebase.database().ref(channel+"/" + hashCode(userId)).once('value').then(function(snapshot) {
         //update the database only when user time is less than the previous time
@@ -22,31 +23,37 @@ function writeUserData(userId, name, score, channel, display) {
                 } else {
                     // console.log("write success")
                   // Data saved successfully!
-                  setTimeout(function(){ display(); }, time_delay_for_db)  
+                  var scoreCountRef = firebase.database().ref(channel+'/');
+                  console.log("database read after update")
+                  scoreCountRef.orderByChild("score").once('value', function(snapshot) {
+                      leaderboard = []
+                      snapshot.forEach(function(child) {
+                          leaderboard.push(child.val()) // NOW THE CHILDREN PRINT IN ORDER
+                      });
+                      setTimeout(function(){ display(); }, time_delay_for_db)  
+                  });
+                  
                   
                 }
               });
         }
         else{
-            display()
+            var scoreCountRef = firebase.database().ref(channel+'/');
+            console.log("database read no update")
+            scoreCountRef.orderByChild("score").once('value', function(snapshot) {
+                leaderboard = []
+                snapshot.forEach(function(child) {
+                    leaderboard.push(child.val()) // NOW THE CHILDREN PRINT IN ORDER
+                });
+            setTimeout(function(){ display(); }, time_delay_for_db)  
+            });
+            
         }
 
     });
 };
 
-function ReadUserData(channel,aftergame){
-    var leaderboard = []
-    var scoreCountRef = firebase.database().ref(channel+'/');
-    // console.log(scoreCountRef)
-    scoreCountRef.orderByChild("score").once('value', function(snapshot) {
-        // console.log(snapshot.val())
-        leaderboard = []
-        snapshot.forEach(function(child) {
-            leaderboard.push(child.val()) // NOW THE CHILDREN PRINT IN ORDER
-        });
-        aftergame(leaderboard)
-    });
-};
+
 
 
  

@@ -14,37 +14,37 @@ const colors = {
 }
 
 // array describing the drivers, sorted by position and with a gap describing the distance from the leading driver
-const leaderboard = [
-  {
-    name: 'syedafshan11',
-    score: '00:05:456',
-  },
-  {
-    name: 'ValteriBottas23',
-    score: '00:10:432'
-  },
-  {
-    name: 'Sebastian_Vettel',
-    score: '00:18:345'
-  },
-  {
-    name: 'Max02Verstappen',
-    score: '00:29:234'
-  },
-  {
-    name: 'Charles12Leclerc',
-    score: '00:49:232'
-  },
-  {
-    name: 'Pierre43Gasly',
-    score: '01:43:943',
-    gap: '+89.307s'
-  },
-  {
-    name: 'Daniel54Ricciardo',
-    score: '02:32:543'
-  }
-];
+// const leaderboard = [
+//   {
+//     name: 'syedafshan11',
+//     score: '00:05:456',
+//   },
+//   {
+//     name: 'ValteriBottas23',
+//     score: '00:10:432'
+//   },
+//   {
+//     name: 'Sebastian_Vettel',
+//     score: '00:18:345'
+//   },
+//   {
+//     name: 'Max02Verstappen',
+//     score: '00:29:234'
+//   },
+//   {
+//     name: 'Charles12Leclerc',
+//     score: '00:49:232'
+//   },
+//   {
+//     name: 'Pierre43Gasly',
+//     score: '01:43:943',
+//     gap: '+89.307s'
+//   },
+//   {
+//     name: 'Daniel54Ricciardo',
+//     score: '02:32:543'
+//   }
+// ];
 function generate_table(leaderboard){
   // target the table element in which to add one div for each driver
   const main = d3

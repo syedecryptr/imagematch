@@ -11,6 +11,8 @@ var table = document.getElementById("table")
 var email_value = ""
 var channel = "public"
 var name = ""
+var leaderboard = []
+
 $(start_button).on("click touchstart", function() {
     // Do things]start_game
     start_game()
@@ -162,29 +164,23 @@ function toggle_board(){
 
 }
 
-function after_game(leaderboard){
-
-    //show the leaderboard
-    table.style.display="table"
-    //rearrange leaderboard
-    r_leaderboard = []
-    for (var i=0; i<leaderboard.length; i++){
-        l_element = leaderboard[i]
-        l_element["pos"] = i+1
-        if(i<5 || l_element["name"] == name){
-            r_leaderboard.push(l_element)
-        }
-    }
-    generate_table(r_leaderboard)
-    //show the reload button
-    reload_container.style.display="block";
-}
 
 function display_scoreBoard(){
 
-    var el = document.getElementsByClassName("board")[0]
-    el.style.webkitFilter = "blur(25px)";
-    ReadUserData(channel, after_game)
+        //show the leaderboard
+        table.style.display="table"
+        //rearrange leaderboard
+        r_leaderboard = []
+        for (var i=0; i<leaderboard.length; i++){
+            l_element = leaderboard[i]
+            l_element["pos"] = i+1
+            if(i<5 || l_element["name"] == name){
+                r_leaderboard.push(l_element)
+            }
+        }
+        generate_table(r_leaderboard)
+        //show the reload button
+        reload_container.style.display="block";
     
 }
 
@@ -192,6 +188,8 @@ function game_end(){
     stop_clock() 
     name = email_value.split("@")[0]
     score = document.getElementById("minute").innerHTML+":"+document.getElementById("second").innerHTML+":"+document.getElementById("millisecond").innerHTML
+    var el = document.getElementsByClassName("board")[0]
+    el.style.webkitFilter = "blur(25px)";
     writeUserData(email_value, name, score, channel, display_scoreBoard)
 }
 
